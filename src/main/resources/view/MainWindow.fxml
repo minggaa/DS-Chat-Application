@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" styleClass="background" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MainWindowController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="847.0" stylesheets="@../style/style.css">
+            <children>
+                <GridPane layoutX="15.0" layoutY="13.0" prefHeight="84.0" prefWidth="334.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="13.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="56.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="198.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="80.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Name" GridPane.columnIndex="0" />
+                        <TextField fx:id="userName" prefHeight="32.0" prefWidth="200.0" promptText="Enter username" GridPane.columnIndex="1" />
+                        <Button fx:id="joinBtn" mnemonicParsing="false" onAction="#handleJoin" prefHeight="32.0" prefWidth="56.0" text="Join" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <Label text="Status" GridPane.rowIndex="1" />
+                        <Label fx:id="statusLbl" text="Offline" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    </children>
+                </GridPane>
+                <ListView fx:id="messageView" layoutX="366.0" layoutY="47.0" prefHeight="446.0" prefWidth="420.0" styleClass="message-panel" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="366.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="47.0" />
+                <Label layoutX="367.0" layoutY="15.0" styleClass="headers" text="Chat" />
+
+                <TextField fx:id="messageField" layoutX="366.0" layoutY="505.0" prefHeight="34.0" prefWidth="342.0" promptText="Type a message" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="366.0" AnchorPane.rightAnchor="92.0" />
+
+                <!-- Reposition Send buttons and justify with space -->
+                <Button fx:id="sendBtn" layoutX="721.0" layoutY="505.0" mnemonicParsing="false" onAction="#handleSend" prefHeight="31.0" prefWidth="65.0" text="Send" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+            <Separator layoutX="335.0" layoutY="1.0" orientation="VERTICAL" prefHeight="550.0" prefWidth="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <TabPane layoutX="7.0" layoutY="97.0" prefHeight="396.0" prefWidth="329.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="464.0" AnchorPane.topAnchor="97.0">
+              <tabs>
+                <Tab text="Online Users">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="onlineUsers" layoutX="7.0" onMouseClicked="#handleSelectedUsers" prefHeight="402.0" prefWidth="322.0" styleClass="users-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Active Groups">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="activeGroups" layoutX="7.0" layoutY="-2.0" onMouseClicked="#handleSelectedGroup" prefHeight="359.0" prefWidth="322.0" styleClass="users-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="-2.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <TextField fx:id="inputGrpName" layoutX="14.0" layoutY="504.0" prefHeight="33.0" prefWidth="240.0" promptText="Name your group" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" />
+            <Button fx:id="btnCreateGroup" layoutX="266.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleCreateGroup" prefHeight="31.0" prefWidth="70.0" text="Create" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="266.0" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
